@@ -1,0 +1,17 @@
+{
+  "name": "minimalify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "electron": "^12.0.6",
+    "express": "^4.17.1",
+    "spotify-web-api-node": "^5.0.2"
+  }
+}

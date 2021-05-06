@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  	<meta charset="UTF-8" />
+  	<title>Ares</title>
+  	<meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
+  	<link rel="stylesheet" href="./styles/style.css" />
+  	<link rel="stylesheet" href="./styles/macos.css" />
+  	<script type="text/javascript" src="./assets/jquery.min.js"></script>
+  	<link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+</head>
+
+<body>
+  	<header>
+		<div class="header">
+			<div class="titlebar-drag-region"></div>
+			<div class="mac focus" id="mac">
+				<div style="float: left">
+		  			<div class="traffic-lights">
+						<button class="traffic-light traffic-light-close" id="close"></button>
+						<button class="traffic-light traffic-light-minimize" id="mini"></button>
+						<button class="traffic-light traffic-light-maximize" id="maximize"></button>
+		  			</div>
+				</div>
+				<div style="float: right">
+		  			<i id="topmac" class="fas fa-thumbtack" style="-webkit-app-region: no-drag"></i>
+				</div>
+	  		</div>
+		</div>
+  </header>
+  <div class="center" id="overlay">
+		<h1 id="song"></h1>
+		<h2 id="artist"></h2>
+  </div>
+  <div class="album" id="bg"></div>
+  <footer>
+		<div id="media-controls" style="position: absolute; bottom: 15px; text-align: center; width: 100%">
+	  		<span>
+				<i id="shuffle" class="fas fa-random"></i>
+				<i id="previous" class="fa fa-step-backward"></i>
+				<i id="toggle" class="fas fa-play"></i>
+				<i id="seek" class="fa fa-step-forward"></i>
+				<i id="repeat" class="fas fa-sync-alt"></i>
+	  		</span>
+	  		<!--
+			<div style="position: absolute; float: right; top: -3px; right: 10px;">
+				<input type="range" id="volume-knob" class="input-knob" data-diameter="20" data-fgcolor="#555555"
+		  			data-bgcolor="#FFFFFF" data-src="./images/circle-notch-white.svg" step="2" />
+	  		</div>
+			-->
+		</div>
+		<div style="position: absolute; float: left; left: 15px; bottom: 15px;">
+	  		<i id="option-button" class="fas fa-bars"></i>
+		</div>
+		<div id="options">
+	  		<ul>
+				<li id="opt-square">
+		  			<i>Square</i>
+				</li>
+				<li id="opt-prog">
+		  			<i>Progress Bar</i>
+				</li>
+				<li id="opt-signin">
+		  			<i>Sign In</i>
+				</li>
+				<li id="opt-device">
+		  			<i>Device</i>
+				</li>
+				<div id="devices-wrapper">
+		  			<ul id="devices" style="margin-top: -5px;">
+		  			</ul>
+				</div>
+	  		</ul>
+		</div>
+  	</footer>
+  	<div id="progressbar"></div>
+
+	<script src="./client.js" />
+</body>
+
+</html>
