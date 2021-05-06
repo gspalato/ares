@@ -1,0 +1,7 @@
+{
+    "name": "ares",
+    "description": "A spotify widget for Wonders.",
+    "author": "spalato",
+    "version": 1.0,
+    "entry": "./index.js"
+}
