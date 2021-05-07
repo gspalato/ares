@@ -8,13 +8,13 @@ const config = require('./config.json') ?? {
 
 const PORT = 8888;
 const CLIENT_ID = 'fa9d2336a7c74e3aa6ef12baa883511e';
-const REDIRECT_URI = `http://localhost:${PORT}/callback/`;
+const REDIRECT_URI = `http://127.0.0.1:${PORT}/callback/`;
 
 class Ares {
 	wonders = null;
 	mainWindow = null;
 	spotify = null;
-	server = express();
+	server = null;
 
 	constructor(wonders) {
 		this.wonders = wonders;
@@ -22,23 +22,22 @@ class Ares {
 			clientId: CLIENT_ID,
 			redirectUrl: REDIRECT_URI,
 		});
+		this.server = express();
 	}
 
 	async start() {
-		this.mainWindow = await this.wonders.createWidgetWindowAsync("spot:main", {
+		this.mainWindow = await this.wonders.createWidgetWindowAsync("ares:main", {
 			height: config.size,
 			width: config.size,
 			minHeight: 250,
 			minWidth: 250,
 			frame: false,
-			
-			//transparent: true,
 		});
 
 		this.mainWindow.loadURL(`file://${__dirname}/index.html`);
 
-		this.linkIpcEvents();
-		this.linkExpressServer();
+		await this.linkIpcEvents();
+		await this.linkExpressServer();
 
 		this.redirectToSpotifyAuth();
 	}
@@ -95,7 +94,7 @@ class Ares {
 
 	getSpotifyAuthUrl() {
 		var scopes = ['user-read-private', 'user-read-email'],
-			state = 'spot-widget-login',
+			state = 'ares-widget-login',
 			showDialog = true,
 			responseType = 'token';
 
@@ -114,7 +113,7 @@ class Ares {
 	}
 
 	async redirectToApp() {
-		this.mainWindow.loadFile(`file://${__dirname}/index.html`);
+		this.mainWindow.loadURL(`file://${__dirname}/index.html`);
 	}
 
 	async stop() {
